@@ -7,7 +7,7 @@ app.config['MONGO_URI'] = 'mongodb+srv://kohler:123@cluster0-qxlqo.mongodb.net/t
 mongo = PyMongo(app)
 
 @app.route('/coutries', methods=['GET'])
-def get_all_frameworks():
+def get_all_countries():
     country = mongo.db.country 
 
     output = []
@@ -18,7 +18,7 @@ def get_all_frameworks():
     return jsonify({'response' : output})
 
 @app.route('/coutries/<name>', methods=['GET'])
-def get_one_framework(name):
+def get_one_country(name):
     country = mongo.db.country
 
     c = country.find_one({'name' : name})
@@ -31,13 +31,13 @@ def get_one_framework(name):
     return jsonify({'response' : output})
 
 @app.route('/coutries', methods=['POST'])
-def add_framework():
-    framework = mongo.db.framework 
+def add_country():
+    countries = mongo.db.countries 
 
     name = request.json['name']
 
-    country_id = framework.insert({'name' : name})
-    new_country = framework.find_one({'_id' : country_id})
+    country_id = countries.insert({'name' : name})
+    new_country = countries.find_one({'_id' : country_id})
 
     output = {'name' : new_country['name']}
 
