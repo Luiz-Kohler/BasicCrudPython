@@ -6,7 +6,7 @@ app.config['MONGO_DBNAME'] = 'Cluster0'
 app.config['MONGO_URI'] = 'mongodb+srv://kohler:123@cluster0-qxlqo.mongodb.net/test?retryWrites=true&w=majority'
 mongo = PyMongo(app)
 
-@app.route('/coutries', methods=['GET'])
+@app.route('/countries', methods=['GET'])
 def get_all_countries():
     country = mongo.db.country 
 
@@ -17,7 +17,7 @@ def get_all_countries():
 
     return jsonify({'response' : output})
 
-@app.route('/coutries/<name>', methods=['GET'])
+@app.route('/countries/<name>', methods=['GET'])
 def get_one_country(name):
     country = mongo.db.country
 
@@ -30,7 +30,7 @@ def get_one_country(name):
 
     return jsonify({'response' : output})
 
-@app.route('/coutries', methods=['POST'])
+@app.route('/countries', methods=['POST'])
 def add_country():
     countries = mongo.db.country 
 
