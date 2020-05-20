@@ -32,7 +32,7 @@ def get_one_country(name):
 
 @app.route('/coutries', methods=['POST'])
 def add_country():
-    countries = mongo.db.countries 
+    countries = mongo.db.country 
 
     name = request.json['name']
 
